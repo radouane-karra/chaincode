@@ -1,0 +1,20 @@
+{
+  "jsonrpc": "2.0",
+  "method": "invoke",
+  "params": {
+    "type": 1,
+    "chaincodeID": {
+      "name": "dd785baf9f5918fecffb468f11ad9af3dc534810455a81346e9ccb1a24204f483c82e37484cb008243e94e31de7037434db9c29b849354e90a673d40d7ccc3f5"
+    },
+    "ctorMsg": {
+      "function": "deviceAttestationStatus",
+      "args": [
+        "device3",
+        "server2",
+        "2",
+        "0onwhnr9uodmvnp4wcw7"
+      ]
+    }
+  },
+  "id": 0
+}
