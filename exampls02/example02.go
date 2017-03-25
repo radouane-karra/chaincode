@@ -33,7 +33,8 @@ func (t *PotCommun) Init(stub shim.ChaincodeStubInterface) pb.Response {
 	logger.Info("PotCommun Init")
 
   var err error
-
+  function, args := stub.GetFunctionAndParameters()
+  
 	if len(args) != 0 {
 		logger.Error("Incorrect number of arguments")
     return shim.Error("Incorrect number of arguments. No arguments required for deploying this contract.")
