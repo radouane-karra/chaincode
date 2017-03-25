@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"errors"
 	"fmt"
 	"strconv"
@@ -17,11 +16,6 @@ const (
 	tableName = "UserAccounts"
 )
 
-type UserAccountInfo struct {
-	UserID            string `json:"user_id"`
-	AccountID         string `json:"account_id"`
-	Status            uint64 `json:"status"`
-}
 
 // RemoteDeviceAttestation implementation. This smart contract enables multiple attestors
 // to perform remote attestation of device and verify that the device is running authentic
@@ -34,7 +28,7 @@ func (t *PotCommun) Init(stub shim.ChaincodeStubInterface) pb.Response {
 
   var err error
   function, args := stub.GetFunctionAndParameters()
-  
+
 	if len(args) != 0 {
 		logger.Error("Incorrect number of arguments")
     return shim.Error("Incorrect number of arguments. No arguments required for deploying this contract.")
