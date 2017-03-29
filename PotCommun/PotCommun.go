@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+  "strconv"
 
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 )
@@ -35,7 +36,7 @@ func (t *PotCommun) Invoke(stub shim.ChaincodeStubInterface, function string, ar
 	// Handle different functions
 	if function == "addAccount" {
 		return t.addAccount(stub, args)
-	} 
+	}
 
 	fmt.Println("invoke did not find func: " + function)
 
@@ -77,7 +78,7 @@ func (t *PotCommun) addAccount(stub shim.ChaincodeStubInterface, args []string) 
 	// Write the state to the ledger
 	err = stub.PutState(account, []byte(strconv.Itoa(value)))
 	if err != nil {
-		return shim.Error(err.Error())
+    return nil, err
 	}
 
   return nil, nil
@@ -85,7 +86,7 @@ func (t *PotCommun) addAccount(stub shim.ChaincodeStubInterface, args []string) 
 
 // read - query function to read key/value pair
 func (t *PotCommun) readAccount(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
-	var key, jsonResp string
+	var account, jsonResp string
 	var err error
 
 	if len(args) != 1 {
